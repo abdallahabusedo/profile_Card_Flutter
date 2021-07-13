@@ -6,7 +6,16 @@ void main() =>
   ));
 
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+
+  int current_Level = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +70,7 @@ class MyApp extends StatelessWidget {
             ),
             SizedBox(height: 10.0),
             Text(
-                "10",
+                "$current_Level",
                 style: TextStyle(
                     color: Colors.yellow,
                     letterSpacing: 2.0,
@@ -90,7 +99,17 @@ class MyApp extends StatelessWidget {
               ),
             ),
             SizedBox(height: 30.0),
+            FloatingActionButton(
+              onPressed: (){
+                setState(() {
+                  current_Level+=1;
+                });
+            },
+            child: Icon(Icons.add),
+              backgroundColor: Colors.yellow,
+            )
           ],
+          
         ),
       ),
     );
